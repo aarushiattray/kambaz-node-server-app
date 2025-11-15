@@ -17,8 +17,7 @@ app.use(
   cors({
     credentials: true,
     //origin: process.env.CLIENT_URL || "http://localhost:3000",
-    origin:[process.env.CLIENT_URL,
-      "https://kambaz-next-js-f9a5-git-a5-aarushi-attrays-projects.vercel.app/Account/Signin" ]
+    origin: ['*']
   })
 );
 
