@@ -12,6 +12,7 @@ import "dotenv/config";
 import session from "express-session";
 
 const app = express();
+const cors =require('cors');
 
 app.use(
   cors({
