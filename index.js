@@ -20,7 +20,7 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: process.env.CLIENT_URL || "http://localhost:3000",
+    origin: process.env.CLIENT_URL || "http://localhost:3000" || "https://kambaz-a6-git-main-aarushi-attrays-projects.vercel.app/Account/Signin"
     //origin: "https://kambaz-next-js-git-a5-aarushi-attrays-projects.vercel.app"
   })
 );
