@@ -8,7 +8,6 @@ import UserRoutes from "./Kambaz/Users/routes.js";
 import CourseRoutes from "./Kambaz/Courses/routes.js";
 import ModulesRoutes from "./Kambaz/Modules/routes.js";
 import AssignmentsRoutes from "./Kambaz/Assignments/routes.js";
-//import EnrollmentsRoutes from "./Kambaz/Enrollments/routes.js";
 import "dotenv/config";
 import session from "express-session";
 
@@ -20,8 +19,10 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: process.env.CLIENT_URL || "http://localhost:3000" 
-    //origin: "https://kambaz-next-js-git-a5-aarushi-attrays-projects.vercel.app"
+    origin: [
+      process.env.CLIENT_URL || "http://localhost:3000",
+      "https://kambaz-a6-git-a6-aarushi-attrays-projects.vercel.app"
+    ]
   })
 );
 
@@ -48,7 +49,6 @@ UserRoutes(app, db);
 CourseRoutes(app, db);
 ModulesRoutes(app, db);
 AssignmentsRoutes(app, db);
-//EnrollmentsRoutes(app, db);
 Lab5(app);
 Hello(app);
 
