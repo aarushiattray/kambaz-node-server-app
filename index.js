@@ -16,13 +16,21 @@ mongoose.connect(CONNECTION_STRING);
 
 const app = express();
 
+// app.use(
+//   cors({
+//     credentials: true,
+//     origin: [
+//       process.env.CLIENT_URL || "http://localhost:3000",
+//       "https://kambaz-a6-git-a6-aarushi-attrays-projects.vercel.app"
+//     ]
+//   })
+// );
+
 app.use(
   cors({
     credentials: true,
-    origin: [
-      process.env.CLIENT_URL || "http://localhost:3000",
-      "https://kambaz-a6-git-a6-aarushi-attrays-projects.vercel.app"
-    ]
+    //origin: process.env.CLIENT_URL || "http://localhost:3000",
+    origin: "https://kambaz-a6-git-a6-aarushi-attrays-projects.vercel.app"
   })
 );
 
