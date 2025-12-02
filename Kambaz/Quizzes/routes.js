@@ -29,8 +29,16 @@ const result = await dao.deleteQuiz(quizId);
 res.json(result);
 };
 
+const findQuizById = async (req, res) => {
+    const { quizId } = req.params;
+    const quiz = await dao.findQuizById(quizId);
+    if (!quiz) return res.status(404).json({ error: "Quiz not found" });
+    res.json(quiz);
+  };
+
 app.get("/api/courses/:courseId/quizzes", findQuizzesForCourse);
 app.post("/api/courses/:courseId/quizzes", createQuizForCourse);
 app.put("/api/quizzes/:quizId", updateQuiz);
 app.delete("/api/quizzes/:quizId", deleteQuiz);
+app.get("/api/quizzes/:quizId", findQuizById);
 }

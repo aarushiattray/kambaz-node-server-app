@@ -21,5 +21,9 @@ const result = await model.deleteOne({ _id: quizId });
 return { success: result.deletedCount > 0 };
 }
 
-return { findQuizzesForCourse, createQuiz, updateQuiz, deleteQuiz };
+async function findQuizById(quizId) {
+    return model.findById(quizId);
+  }
+
+return { findQuizzesForCourse, createQuiz, updateQuiz, deleteQuiz, findQuizById };
 }
