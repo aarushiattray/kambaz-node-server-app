@@ -12,15 +12,23 @@ import QuizzesRoutes from "./Kambaz/Quizzes/routes.js";
 import "dotenv/config";
 import session from "express-session";
 
-const CONNECTION_STRING = process.env.DATABASE_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kambaz"
+const CONNECTION_STRING = "mongodb+srv://emilycky1968:Rebecca968@kambaz.fnextzl.mongodb.net/kambaz"
 mongoose.connect(CONNECTION_STRING);
+
+mongoose.connection.on('connected', () => {
+  console.log('✅ MongoDB connected successfully');
+});
+
+mongoose.connection.on('error', (err) => {
+  console.log('❌ MongoDB connection error:', err);
+});
 
 const app = express();
 
 app.use(
   cors({
     credentials: true,
-    origin: process.env.CLIENT_URL || "http://localhost:3000",
+    origin: "http://localhost:3000",
     //origin: "https://kambaz-a6-git-a6-aarushi-attrays-projects.vercel.app"
   })
 );
