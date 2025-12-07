@@ -1,5 +1,4 @@
 import express from "express";
-import mongoose from "mongoose";
 import Hello from "./Hello.js";
 import Lab5 from "./Lab5/index.js";
 import cors from "cors";
@@ -8,29 +7,17 @@ import UserRoutes from "./Kambaz/Users/routes.js";
 import CourseRoutes from "./Kambaz/Courses/routes.js";
 import ModulesRoutes from "./Kambaz/Modules/routes.js";
 import AssignmentsRoutes from "./Kambaz/Assignments/routes.js";
-import QuizzesRoutes from "./Kambaz/Quizzes/routes.js";
-import QuizAttemptsRoutes from "./Kambaz/QuizAttempts/routes.js";
+import EnrollmentsRoutes from "./Kambaz/Enrollments/routes.js";
 import "dotenv/config";
 import session from "express-session";
-
-const CONNECTION_STRING = "mongodb+srv://emilycky1968:Rebecca968@kambaz.fnextzl.mongodb.net/kambaz"
-mongoose.connect(CONNECTION_STRING);
-
-mongoose.connection.on('connected', () => {
-  console.log('✅ MongoDB connected successfully');
-});
-
-mongoose.connection.on('error', (err) => {
-  console.log('❌ MongoDB connection error:', err);
-});
 
 const app = express();
 
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:3000",
-    //origin: "https://kambaz-a6-git-a6-aarushi-attrays-projects.vercel.app"
+    //origin: process.env.CLIENT_URL || "http://localhost:3000",
+    origin: "https://kambaz-next-js-git-a5-aarushi-attrays-projects.vercel.app"
   })
 );
 
@@ -57,8 +44,7 @@ UserRoutes(app, db);
 CourseRoutes(app, db);
 ModulesRoutes(app, db);
 AssignmentsRoutes(app, db);
-QuizzesRoutes(app);
-QuizAttemptsRoutes(app);
+EnrollmentsRoutes(app, db);
 Lab5(app);
 Hello(app);
 
