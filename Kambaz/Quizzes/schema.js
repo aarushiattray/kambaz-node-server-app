@@ -9,14 +9,22 @@ const quizSchema = new mongoose.Schema(
     description: { type: String },
     points: { type: Number, default: 0 },
     numberOfQuestions: { type: Number, default: 0 },
+
     questions: [
       {
-        questionText: String,
+        type: {
+          type: String,
+          enum: ["MCQ", "TF", "FIB"],
+          default: "MCQ",
+        },
+        questionText: { type: String, default: "" },
         points: { type: Number, default: 1 },
         choices: [String],
         correctAnswer: String,
+        answers: [String],
       },
     ],
+
     availableDate: { type: Date },
     dueDate: { type: Date },
     availableUntil: { type: Date },
