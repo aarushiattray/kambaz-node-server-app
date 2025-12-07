@@ -1,6 +1,7 @@
 import model from "./model.js";
 import { v4 as uuidv4 } from "uuid";
 
+
 export default function QuizAttemptsDao() {
   async function findAttemptsByQuizAndUser(quizId, userId) {
     return model.find({ quizId, userId }).sort({ attemptNumber: -1 });

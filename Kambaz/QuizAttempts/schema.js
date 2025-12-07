@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+
 const quizAttemptSchema = new mongoose.Schema(
   {
     _id: { type: String, required: true },
